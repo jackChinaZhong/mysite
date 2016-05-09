@@ -1,0 +1,16 @@
+
+{% for devtype in devtype_list %}
+{{ devtype}}
+{% endfor %}
+
+{% for devinfo in devinfo_list %}
+<div>
+{{devinfo.devID}}{{devinfo.devType}}
+{% for devmode in devmode_list %}
+    {% for key,value in devmode.items %}
+	<a href={% url value %}?devid={{devinfo}}>{{key}}</a>
+	{% endfor %}	
+{% endfor %}
+</div>
+{% endfor %}
+					

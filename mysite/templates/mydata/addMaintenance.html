@@ -1,0 +1,16 @@
+<charset uft-8>
+<form action="/maintenance/" method='POST'>
+ {% csrf_token %}
+{% for filed in form %}
+<div>
+{% if filed.name == 'maintenanceTime' %}
+{{filed.label_tag}}{{filed}}
+{% else %}
+{{filed.label_tag}}{{filed}}
+{% endif %}
+{{filed.errors}}
+
+</div>
+{% endfor %}
+<input type="submit"></input>
+</form>
