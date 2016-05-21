@@ -81,7 +81,7 @@ class Maintenance(models.Model):
     maintenanceID = models.CharField(u'维修ID',primary_key=True,max_length=10)
     devId = models.ForeignKey(DevInfo, verbose_name=u"设备ID")
     inputTime = models.DateTimeField(auto_now=True,verbose_name=u'录入时间')
-    maintenanceTime = models.DateTimeField(verbose_name=u"维修时间")
+    maintenanceTime = models.DateField(verbose_name=u"维修时间")
     statu = models.CharField(u"维修状态", max_length=2)
     company = models.ForeignKey(Customer, verbose_name=u"所属公司")
     addr = models.CharField(u"维修地址", max_length=40)

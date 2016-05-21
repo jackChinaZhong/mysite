@@ -69,8 +69,7 @@ def newmaintenance(request):
     if request.method == 'POST':
         form = MaintenanceForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.maintenanceTime = timezone.now()
+            post = form.save(commit=True)
             post.save()
     else:
         form = MaintenanceForm()
@@ -161,9 +160,3 @@ def findDevinfo(request):
         'devinfo_list': devinfo_list,
     }
     return render(request, 'mydata/findDevinfo.html', content)
-
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset=User.objects.all()
-    serializer_class = DevinfoSerializer
