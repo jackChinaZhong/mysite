@@ -16,21 +16,21 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from mydata import views
+from mydata.views import *
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    #url(r'^data/',include('mydata.urls')),
-    url(r'^index/','mydata.views.index',name='index'),
-    url(r'^customer/','mydata.views.newcustomer',name='add'),
-    url(r'^type/','mydata.views.newdevtype',name='newdevtype'),
-    url(r'^devinfo/','mydata.views.newdevinfo',name='newdevinfo'),
-    url(r'^fault/','mydata.views.newfault',name='newfault'),
-    url(r'^maintenance/','mydata.views.newmaintenance',name='newmaintenance'),
-    url(r'^findCustomer/$','mydata.views.findcustomer',name='findcustomer'),
-    url(r'^findDevinfo/$','mydata.views.findDevinfo',name='findDevinfo'),
-    url(r'^saleinfo/$','mydata.views.index',name='saleinfo'),
-    url(r'^qa/$','mydata.views.index',name='qa'),
-    url(r'^wx/$','mydata.views.findMaintenance',name='wx'),
-    url(r'^produce/$','mydata.views.index',name='produce'),
+    url(r'^customer/', newcustomer, name='add'),
+    url(r'^type/', newdevtype, name='newdevtype'),
+    url(r'^devinfo/', newdevinfo, name='newdevinfo'),
+    url(r'^fault/', newfault, name='newfault'),
+    url(r'^maintenance/', newmaintenance, name='newmaintenance'),
+    url(r'^findCustomer/$', findcustomer, name='findcustomer'),
+    url(r'^findDevinfo/$', findDevinfo, name='findDevinfo'),
+    url(r'^saleinfo/$', index, name='saleinfo'),
+    url(r'^qa/$', index, name='qa'),
+    url(r'^wx/$', findMaintenance, name='wx'),
+    url(r'^produce/$', index, name='produce'),
+    #url(r'^postion/$', addPipeLineOne, name='addPipeLineOne'),
 ]

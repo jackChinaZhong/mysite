@@ -28,3 +28,31 @@ class MaintenanceForm(ModelForm):
         model=Maintenance
         fields=('maintenanceID','devId','statu','company','addr','fault',
                 'maintenancer','detail','part')
+class pipelineOneForm(ModelForm):
+    class Meta:
+        model = pipelineOne
+        exclude = ['ProductionDate']
+
+
+class piplineTwoForm(ModelForm):
+    class Meta:
+        model = pipelineTwo
+        exclude = ['ProductionDate']
+
+
+class piplineThreeForm(ModelForm):
+    class Meta:
+        model = pipelineThree
+        exclude = ['ProductionDate']
+
+
+class piplineFourForm(ModelForm):
+    class Meta:
+        model = pipelineFour
+        exclude = ['ProductionDate']
+
+
+class piplineFiveForm(ModelForm):
+    class Meta:
+        model = pipelineFive
+        exclude = ['ProductionDate']
