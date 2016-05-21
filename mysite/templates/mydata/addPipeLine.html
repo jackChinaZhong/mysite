@@ -11,10 +11,8 @@
  {% csrf_token %}
 {% for filed in form %}
 <div>
-
 {{filed.label_tag}}{{filed}}
 {{filed.errors}}
-
 </div>
 {% endfor %}
 <input type="submit"></input>

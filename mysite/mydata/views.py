@@ -227,3 +227,8 @@ def addPipeLineFive(request):
     else:
         form = piplineFiveForm()
     return render(request, "mydata/addPipeline.html", {'form': form})
+
+
+def findPostion(request):
+    pass
+
