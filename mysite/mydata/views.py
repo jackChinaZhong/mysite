@@ -232,4 +232,12 @@ def addPipeLineFive(request):
 def findPostion(request):
     if request.method=='GET':
         devid=request.GET.get('devid','')
+        list_one=pipelineOne.objects.filter(devID__devID=devid)
+        list_two=pipelineTwo.objects.filter(devID__devID=devid)
+        list_three=pipelineThree.objects.filter(devID__devID=devid)
+        list_four=pipelineFour.objects.filter(devID__devID=devid)
+        list_five=pipelineFive.objects.filter(devID__devID=devid)
+
+
+
 
