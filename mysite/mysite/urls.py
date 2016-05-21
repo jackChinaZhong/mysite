@@ -32,5 +32,9 @@ urlpatterns = [
     url(r'^qa/$', index, name='qa'),
     url(r'^wx/$', findMaintenance, name='wx'),
     url(r'^produce/$', index, name='produce'),
-    #url(r'^postion/$', addPipeLineOne, name='addPipeLineOne'),
+    url(r'^postion1/$', addPipeLineOne, name='addPipeLineOne'),
+    url(r'^postion2/$', addPipeLineTwo, name='addPipeLineOne'),
+    url(r'^postion3/$', addPipeLineThree, name='addPipeLineOne'),
+    url(r'^postion4/$', addPipeLineFour, name='addPipeLineOne'),
+    url(r'^postion5/$', addPipeLineFive, name='addPipeLineOne'),
 ]

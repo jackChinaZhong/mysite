@@ -160,3 +160,70 @@ def findDevinfo(request):
         'devinfo_list': devinfo_list,
     }
     return render(request, 'mydata/findDevinfo.html', content)
+
+def addPipeLineOne(request):
+    message = ""
+    if request.method == 'POST':
+        form = pipelineOneForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                form = pipelineOneForm()
+                message = "新增设备工位信息成功"
+            except :
+                message="增加工位信息错误"
+
+    else:
+        form = pipelineOneForm()
+    content = {
+        'title': "增加工位一信息",
+        'form': form,
+        'message': message,
+    }
+    return render(request, "mydata/addPipeline.html", content)
+def findePipline(request):
+    pass
+
+def addPipeLineTwo(request):
+    if request.method == 'POST':
+        form = piplineTwoForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = piplineTwoForm()
+    return render(request, "mydata/addPipeline.html", {'form': form})
+
+
+def addPipeLineThree(request):
+    if request.method == 'POST':
+        form = piplineThreeForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = piplineThreeForm()
+
+    content = {
+        'title': "增加工位3信息",
+        'form': form,
+    }
+    return render(request, "mydata/addPipeline.html", content)
+
+
+def addPipeLineFour(request):
+    if request.method == 'POST':
+        form = piplineFourForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = piplineFourForm()
+    return render(request, "mydata/addPipeline.html", {'form': form})
+
+
+def addPipeLineFive(request):
+    if request.method == 'POST':
+        form = piplineFiveForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = piplineFiveForm()
+    return render(request, "mydata/addPipeline.html", {'form': form})
