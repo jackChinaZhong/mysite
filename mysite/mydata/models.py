@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 import time
-from django.core.urlresolvers import reverse
-
 
 
 # Create your models here.
@@ -96,9 +94,6 @@ class Maintenance(models.Model):
     def __unicode__(self):
         return self.maintenanceID
 
-    def get_absolute_url(self):
-        return reverse('wx',args=(self.devId,))
-
 class pipelineOne(models.Model):
     COMPLETE = u'完成'
     UNFIT = u'不适合'
@@ -107,8 +102,8 @@ class pipelineOne(models.Model):
         (UNFIT, UNFIT),
     )
 
-    devID = models.ForeignKey(DevInfo, unique=True,verbose_name=u'产品编号')
-    #devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
+    #devID = models.ForeignKey(DevInfo, unique=True,verbose_name=u'产品编号')
+    devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
     # devID=models.CharField(u'产品编号',primary_key=True)
     QuickPlug = models.CharField(u'快速插座', choices=CHOICES, max_length=6)
     FBIC = models.CharField(u'平底隔离柱', choices=CHOICES, max_length=6)
@@ -197,8 +192,8 @@ class pipelineTwo(models.Model):
         (u'绵阳天意电子有限公司', u'绵阳天意电子有限公司'),
         (u'绵阳宇虹电子有限公司', u'绵阳宇虹电子有限公司'),
     )
-    devID = models.ForeignKey(DevInfo, verbose_name=u'产品编号')
-    #devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
+    #devID = models.ForeignKey(DevInfo, verbose_name=u'产品编号')
+    devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
     EleCapCom = models.CharField(u'电解电容组合', max_length=6, choices=CHOICES)
     EleCapComModel = models.CharField(u'电解电容型号', max_length=20, choices=ELECAPCOMMODEL)
     EleCapComMaker = models.CharField(u'电解电容厂家', max_length=10, choices=ELECAPCOMMAKER)
@@ -254,8 +249,8 @@ class pipelineThree(models.Model):
         (u'上海瀚显', u'上海瀚显'),
         (u'成都熊谷', u'成都熊谷'),
     )
-    devID = models.ForeignKey(DevInfo, verbose_name=u'产品编号')
-    #devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
+    #devID = models.ForeignKey(DevInfo, verbose_name=u'产品编号')
+    devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
     IGBTConnectionAndAB = models.CharField(u'IGBT接线与AB保护板', choices=CHOICES, max_length=6)
     FrontAndRearPanels = models.CharField(u'前,后面板', max_length=6)
     Fan = models.CharField(u'风机型号', choices=FANMODEL, max_length=20)
@@ -291,8 +286,8 @@ class pipelineFour(models.Model):
         (u'上海良信电器股份有限公司', u'上海良信电器股份有限公司'),
         (u'台安科技(无锡)', u'台安科技(无锡)'),
     )
-    devID = models.ForeignKey(DevInfo, verbose_name=u'产品编号')
-    #devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
+    #devID = models.ForeignKey(DevInfo, verbose_name=u'产品编号')
+    devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
     EnterFilterInductor = models.CharField(u'输入滤波电感', choices=CHOICES, max_length=6)
     WholeWiring = models.CharField(u'整机接线', choices=CHOICES, max_length=6, default=COMPLETE)
     AriSwitchBracket = models.CharField(u'空气开关支架', choices=CHOICES, max_length=6)
@@ -316,8 +311,8 @@ class pipelineFive(models.Model):
         (COMPLETE, COMPLETE),
         (UNFIT, UNFIT),
     )
-    devID = models.ForeignKey(DevInfo, verbose_name=u'产品编号')
-    #devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
+    #devID = models.ForeignKey(DevInfo, verbose_name=u'产品编号')
+    devID = models.OneToOneField(DevInfo, verbose_name=u'产品编号')
     ControlPanel = models.CharField(u'控制板', choices=CHOICES, max_length=6)
     ControlPanelVersion = models.CharField(u'控制板版本号', max_length=10)
     CarriageAndBracingSheet = models.CharField(u'拖板与加强板', max_length=6, choices=CHOICES)

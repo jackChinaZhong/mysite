@@ -230,5 +230,6 @@ def addPipeLineFive(request):
 
 
 def findPostion(request):
-    pass
+    if request.method=='GET':
+        devid=request.GET.get('devid','')
 
