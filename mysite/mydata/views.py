@@ -248,6 +248,7 @@ def addPipeLineFive(request):
 def findPostion(request):
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     message=''
     statu=False
     list_one=''
@@ -301,6 +302,9 @@ def findPostion(request):
 >>>>>>> parent of c1ad725... 简单的增加一些postion的获取
 =======
 >>>>>>> parent of c1ad725... 简单的增加一些postion的获取
+=======
+    pass
+>>>>>>> parent of f34e10c... 一些更新
 =======
     pass
 >>>>>>> parent of f34e10c... 一些更新
