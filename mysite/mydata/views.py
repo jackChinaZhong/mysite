@@ -10,7 +10,7 @@ from django.http import Http404, HttpResponse
 
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from serializers import  *
+from serializers import *
 
 
 # 这里是主界面
@@ -30,25 +30,40 @@ def newcustomer(request):
 
 
 def newdevtype(request):
+    statu=False
     if request.method == 'POST':
         form = DevTypeForm(request.POST)
         if form.is_valid():
             form.save()
-        return HttpResponseRedirect('/index/')
+            statu=True
+            form=DevTypeForm()
     else:
+        statu=False
         form = DevTypeForm()
-    return render(request, "mydata/addDevtype.html", {'form': form})
+    content={
+        'form':form,
+        'message':u'新增设备类型成功',
+        'statu':statu,
+    }
+    return render(request, "mydata/addDevtype.html",content)
 
 
 def newdevinfo(request):
+    statu=False
     if request.method == 'POST':
         form = DevInfoForm(request.POST)
         if form.is_valid():
             form.save()
+            statu=True
     else:
+        statu=False
         form = DevInfoForm()
-
-    return render(request, "mydata/addDevinfo.html", {'form': form})
+    content={
+        'form':form,
+        'statu':statu,
+        'message':u'新增设备信息成功'
+    }
+    return render(request, "mydata/addDevinfo.html",content)
 
 
 def newSaleInfo(request):
@@ -108,15 +123,15 @@ def findMaintenance(request):
     maintenance_list = None
     error = False
     emessage = ""
-    QueryDevID=True
-    if devid.isalnum and devid !="":
+    QueryDevID = True
+    if devid.isalnum and devid != "":
         try:
-            devinfo=DevInfo.objects.get(devID=devid)
+            devinfo = DevInfo.objects.get(devID=devid)
             maintenance_list = Maintenance.objects.filter(devId=devinfo)
-            if  not maintenance_list:
-                error=True
+            if not maintenance_list:
+                error = True
                 QueryDevID = True
-                emessage=u"此设备ID无维护信息"
+                emessage = u"此设备ID无维护信息"
         except DevInfo.DoesNotExist:
             error = True
             emessage = u"设备ID不存在"
@@ -132,7 +147,7 @@ def findMaintenance(request):
     content = {
         'form': maintenance_list,
         'error': error,
-        'querid':QueryDevID,
+        'querid': QueryDevID,
         'message': emessage,
     }
     return render(request, 'mydata/findMaintenance.html', content)
@@ -161,6 +176,7 @@ def findDevinfo(request):
     }
     return render(request, 'mydata/findDevinfo.html', content)
 
+
 def addPipeLineOne(request):
     message = ""
     if request.method == 'POST':
@@ -170,8 +186,8 @@ def addPipeLineOne(request):
                 form.save()
                 form = pipelineOneForm()
                 message = "新增设备工位信息成功"
-            except :
-                message="增加工位信息错误"
+            except:
+                message = "增加工位信息错误"
 
     else:
         form = pipelineOneForm()
@@ -179,10 +195,10 @@ def addPipeLineOne(request):
         'title': "增加工位一信息",
         'form': form,
         'message': message,
+        'url':'/postion1/'
     }
     return render(request, "mydata/addPipeline.html", content)
-def findePipline(request):
-    pass
+
 
 def addPipeLineTwo(request):
     if request.method == 'POST':
@@ -230,14 +246,41 @@ def addPipeLineFive(request):
 
 
 def findPostion(request):
-    if request.method=='GET':
-        devid=request.GET.get('devid','')
-        list_one=pipelineOne.objects.filter(devID__devID=devid)
-        list_two=pipelineTwo.objects.filter(devID__devID=devid)
-        list_three=pipelineThree.objects.filter(devID__devID=devid)
-        list_four=pipelineFour.objects.filter(devID__devID=devid)
-        list_five=pipelineFive.objects.filter(devID__devID=devid)
+    message=''
+    statu=False
+    list_one=''
+    list_two=''
+    list_three=''
+    list_four=''
+    list_five=''
+    if request.method == 'GET':
+        devid = request.GET.get('devid', '')
+        if devid is None:
+            message=u'设备ID不能够为空'
+            statu=True
+        else:
+            try:
+                DevInfo.objects.get(devID=devid)
+                list_one = pipelineOne.objects.filter(devID__devID=devid)
+                list_two = pipelineTwo.objects.filter(devID__devID=devid)
+                list_three = pipelineThree.objects.filter(devID__devID=devid)
+                list_four = pipelineFour.objects.filter(devID__devID=devid)
+                list_five = pipelineFive.objects.filter(devID__devID=devid)
+                statu=True
+                message=u'查询成功'
+            except DevInfo.DoesNotExist:
+                message=u'设备ID不存在'
+                statu=True
 
 
-
+    content={
+        'statu':statu,
+        'message':message,
+        'list_one':list_one,
+        'list_two':list_two,
+        'list_three':list_three,
+        'list_four':list_four,
+        'list_five':list_five
+    }
+    return render(request,'mydata/pipeinfo.html',content)
 

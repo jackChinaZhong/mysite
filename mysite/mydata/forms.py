@@ -18,11 +18,19 @@ class CustomerForm(ModelForm):
         fields=('customerType','companyName','contactName','contactAddr','contactTell')
 
 class DevTypeForm(ModelForm):
+    def clean_devType(self):
+        data = self.cleaned_data['devType']
+        return data.upper()
     class Meta:
         model=DevType
         fields=('devType','devPart')
 
 class DevInfoForm(ModelForm):
+    def clean_devID(self):
+        data =self.cleaned_data['devID']
+        if not data.isdigit or len(data)!=8:
+            raise forms.ValidationError(u'设备ID错误')
+        return data
     class Meta:
         model=DevInfo
         fields=('devID','devType')
@@ -35,7 +43,7 @@ class FaultForm(ModelForm):
 class MaintenanceForm(ModelForm):
     class Meta:
         model=Maintenance
-        fields=('maintenanceID','devId','maintenanceTime','statu','company','addr','fault',
+        fields=('maintenanceID','devId','statu','company','addr','fault',
                 'maintenancer','detail','part')
 class pipelineOneForm(ModelForm):
     class Meta:

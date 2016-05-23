@@ -1,4 +1,7 @@
-<form action="/type/" method='POST'>
+{% if statu %}
+    {{message}}
+{% endif %}
+<form action="/devtype/" method='POST'>
  {% csrf_token %}
 {% for filed in form %}
 <div>

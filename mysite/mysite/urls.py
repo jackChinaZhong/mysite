@@ -21,8 +21,8 @@ from mydata.views import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^customer/', newcustomer, name='add'),
-    url(r'^type/', newdevtype, name='newdevtype'),
+    url(r'^customer/', newcustomer, name='addcustomer'),
+    url(r'^devtype/', newdevtype, name='newdevtype'),
     url(r'^devinfo/', newdevinfo, name='newdevinfo'),
     url(r'^fault/', newfault, name='newfault'),
     url(r'^maintenance/', newmaintenance, name='newmaintenance'),
@@ -31,10 +31,10 @@ urlpatterns = [
     url(r'^saleinfo/$', index, name='saleinfo'),
     url(r'^qa/$', index, name='qa'),
     url(r'^wx/$', findMaintenance, name='wx'),
-    url(r'^produce/$', index, name='produce'),
+    url(r'^produce/$', findPostion, name='produce'),
     url(r'^postion1/$', addPipeLineOne, name='addPipeLineOne'),
-    url(r'^postion2/$', addPipeLineTwo, name='addPipeLineOne'),
-    url(r'^postion3/$', addPipeLineThree, name='addPipeLineOne'),
-    url(r'^postion4/$', addPipeLineFour, name='addPipeLineOne'),
-    url(r'^postion5/$', addPipeLineFive, name='addPipeLineOne'),
+    url(r'^postion2/$', addPipeLineTwo, name='addPipeLineTwo'),
+    url(r'^postion3/$', addPipeLineThree, name='addPipeLineThree'),
+    url(r'^postion4/$', addPipeLineFour, name='addPipeLineFour'),
+    url(r'^postion5/$', addPipeLineFive, name='addPipeLineFive'),
 ]
