@@ -289,6 +289,9 @@ def findPostion(request):
         devid=request.GET.get('devid','')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of c1ad725... 简单的增加一些postion的获取
+=======
 >>>>>>> parent of c1ad725... 简单的增加一些postion的获取
 =======
 >>>>>>> parent of c1ad725... 简单的增加一些postion的获取
