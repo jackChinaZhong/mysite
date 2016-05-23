@@ -246,6 +246,7 @@ def addPipeLineFive(request):
 
 
 def findPostion(request):
+<<<<<<< HEAD
     message=''
     statu=False
     list_one=''
@@ -283,5 +284,14 @@ def findPostion(request):
         'list_five':list_five
     }
     return render(request,'mydata/pipeinfo.html',content)
-
+=======
+    if request.method=='GET':
+        devid=request.GET.get('devid','')
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of c1ad725... 简单的增加一些postion的获取
+=======
+>>>>>>> parent of c1ad725... 简单的增加一些postion的获取
+=======
+>>>>>>> parent of c1ad725... 简单的增加一些postion的获取
 

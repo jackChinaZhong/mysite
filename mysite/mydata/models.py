@@ -56,7 +56,7 @@ class DevInfo(models.Model):
 
 class SaleInfo(models.Model):
     saleID = models.CharField(primary_key=True, max_length=20)
-    saleTime = models.DateField(verbose_name=u"销售时间")
+    saleTime = models.TimeField(verbose_name=u"销售时间", default=time.time())
     buyer = models.ForeignKey(Customer,verbose_name=u'购买方')
     devType = models.ForeignKey(DevType,verbose_name=u'设备类型')  # 这里是应该是表明这个订单是那个类型机器
     devID = models.TextField(u'销售设备ID',blank=False)  # 这里是这个订单中所有的设备ID，这里回事view的时候获取到选择的设备ID
